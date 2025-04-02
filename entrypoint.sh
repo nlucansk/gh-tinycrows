@@ -5,7 +5,7 @@ DEFECTDOJO_URL=$1
 DEFECTDOJO_API_KEY=$2
 ENGAGEMENT_ID=$3
 REPO_TOKEN=$4
-TARGET_URL=$5
+#TARGET_URL=$5
 
 # Run Horusec scan
 horusec start --project-path . -D
@@ -14,8 +14,8 @@ horusec start --project-path . --output-format json --json-output-file horusec-r
 # Run Dependency-Check scan
 ./dependency-check/bin/dependency-check.sh --project "MyProject" --scan "./" --format "XML" --out "dependency-check-report.xml"
 
-# Run OWASP ZAP scan
-docker run --rm -v $(pwd):/zap/wrk/ -t owasp/zap2docker-stable zap-baseline.py -t $TARGET_URL -r zap_report.xml
+# # Run OWASP ZAP scan
+# docker run --rm -v $(pwd):/zap/wrk/ -t owasp/zap2docker-stable zap-baseline.py -t $TARGET_URL -r zap_report.xml
 
 # Run Dastardly scan
 docker run --rm -v $(pwd):/src dastardly-ci/dastardly scan --project . --output dastardly-report.xml

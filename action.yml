@@ -14,9 +14,9 @@ inputs:
   repo_token:
     description: "GitHub Token"
     required: true
-  target_url:
-    description: "Target URL for DAST scans (OWASP ZAP, Dastardly)"
-    required: true
+  # target_url:
+  #   description: "Target URL for DAST scans (OWASP ZAP, Dastardly)"
+  #   required: true
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -25,7 +25,7 @@ runs:
     - ${{ inputs.defectdojo_api_key }}
     - ${{ inputs.engagement_id }}
     - ${{ inputs.repo_token }}
-    - ${{ inputs.target_url }}
+    #- ${{ inputs.target_url }}
 branding:
   icon: "shield"
   color: "blue"
